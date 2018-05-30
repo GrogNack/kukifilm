@@ -3,6 +3,7 @@ from selenium.webdriver.support.expected_conditions import *
 from selenium.webdriver.support.ui import WebDriverWait
 from page.login_page import LoginPage
 from page.main_page import MainPage
+from page.cart_page import CartPage
 import random
 
 
@@ -12,6 +13,7 @@ class Application(object):
         self.driver = driver
         self.login_page = LoginPage(driver)
         self.main_page = MainPage(driver)
+        self.cart_page = CartPage(driver)
         self.wait = WebDriverWait(driver, 10)
 
     def go_to_login_page(self):
@@ -28,6 +30,10 @@ class Application(object):
         lp.password_field.send_keys(user.password)
         lp.submit_bitton.click()
 
-    def add_film_to_cart(self,num):
+    def add_film_to_cart(self):
         fp = self.main_page
+        cp = self.cart_page
         fp.filmpage_link.click()
+        fp.add_to_button.click()
+        fp.cart_link.click()
+        cp.remove_button.click()

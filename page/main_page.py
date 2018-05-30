@@ -14,3 +14,11 @@ class MainPage(object):
         s = self.driver.find_elements(By.CSS_SELECTOR,"a.poster")
         count = random.randint(0,11)
         return s[count]
+
+    @property
+    def cart_link(self):
+        return self.driver.find_element_by_css_selector("a[href='/cart']")
+
+    @property
+    def add_to_button(self):
+        return self.driver.find_element_by_css_selector("a.button")

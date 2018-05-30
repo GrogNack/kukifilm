@@ -10,5 +10,5 @@ def test_login(app):
     app.go_to_login_page()
     app.login(User.Admin())
 
-def test_addFilm(app):
-    app.add_film_to_cart(12)
+def test_Film(app):
+    app.add_film_to_cart()
