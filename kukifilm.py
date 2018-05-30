@@ -5,6 +5,10 @@ from fixture import app
 import unittest, time, re
 from model.user_data import User
 
+
 def test_login(app):
-    app.go_to_home_page()
+    app.go_to_login_page()
     app.login(User.Admin())
+
+def test_addFilm(app):
+    app.add_film_to_cart(12)
