@@ -11,4 +11,6 @@ class MainPage(object):
 
     @property
     def filmpage_link(self):
-        return self.driver.find_element_by_css_selector("a[href='/movies/11']")
+        s = self.driver.find_elements(By.CSS_SELECTOR,"a.poster")
+        count = random.randint(0,11)
+        return s[count]
