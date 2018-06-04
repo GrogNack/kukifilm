@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 from selenium.common.exceptions import *
 from selenium.webdriver.support.expected_conditions import *
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
 from page.login_page import LoginPage
 from page.main_page import MainPage
 from page.cart_page import CartPage
@@ -30,6 +32,10 @@ class Application(object):
         lp.password_field.send_keys(user.password)
         lp.submit_bitton.click()
 
+    def logout(self):
+        mp = self.main_page
+        mp.logout_link.click()
+
     def add_film_to_cart(self):
         fp = self.main_page
         cp = self.cart_page
@@ -37,3 +43,17 @@ class Application(object):
         fp.add_to_button.click()
         fp.cart_link.click()
         cp.remove_button.click()
+
+    def is_logged_in(self):
+        try:
+            self.wait.until(presence_of_element_located((By.CSS_SELECTOR,"a[href='/cart']")))
+            return True
+        except WebDriverException:
+            return False
+
+    def is_not_logged_in(self):
+        try:
+            self.wait.until(presence_of_element_located((By.CSS_SELECTOR,"a[href='/users/login']")))
+            return True
+        except WebDriverException:
+            return False

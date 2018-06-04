@@ -23,3 +23,8 @@ class MainPage(object):
     @property
     def add_to_button(self):
         return self.driver.find_element_by_css_selector("a.button")
+
+    @property
+    def logout_link(self):
+        return self.driver.find_element_by_css_selector("a[href='/users/logout']")
+
