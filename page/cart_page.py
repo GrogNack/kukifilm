@@ -10,5 +10,4 @@ class CartPage(object):
 
     @property
     def remove_button(self):
-        s = self.driver.find_elements(By.TAG_NAME, "i")
-        return s[2]
+        return self.driver.find_element(By.XPATH, "//*[@id='mycart']//i")

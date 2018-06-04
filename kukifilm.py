@@ -9,6 +9,7 @@ from model.user_data import User
 def test_login(app):
     app.go_to_login_page()
     app.login(User.Admin())
+    app.check_login_page()
 
 def test_Film(app):
     app.add_film_to_cart()
